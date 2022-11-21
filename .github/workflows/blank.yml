@@ -25,4 +25,4 @@ jobs:
           sudo apt install libarchive-dev libreadline-dev libcurl4-openssl-dev libbrotli-dev --no-install-recommends -yq
           meson build -Ddebug=true -Dtools=true -Dlibbrotli=false -Dshared=true --prefix=/usr
           sudo ninja -C build install
-          sudo ymp bootstrap --mirror='https://gitlab.com/sulix/packages/binary-repo/-/raw/master/$uri' --destdir='rootfs' --no-emerge @sys
+          sudo ymp bootstrap --mirror='https://gitlab.com/sulix/packages/binary-repo/-/raw/master/$uri' --destdir='rootfs' --no-emerge @sys --no-processbar

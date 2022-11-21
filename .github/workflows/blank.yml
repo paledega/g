@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "0 6 * * *"
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: f
+        run: |
+          git clone https://gitlab.com/sulix/devel/sources/ymp ymp
+          cd ymp
+          apt update
+          apt full-upgrade -y
+          apt install meson gcc valac --no-install-recommends -y
+          apt install libarchive-dev libreadline-dev libcurl4-openssl-dev libbrotli-dev --no-install-recommends -y
+          meson build -Ddebug=true -Dtools=true -Dlibbrotli=false -Dtest=true -Dshared=true
+          ninja -C build
+          ymp bootstrap --mirror='https://gitlab.com/sulix/packages/binary-repo/-/raw/master/$uri' --destdir='rootfs' --no-emerge @sys

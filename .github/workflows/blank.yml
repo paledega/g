@@ -17,7 +17,7 @@ jobs:
         run: |
           git clone https://gitlab.com/sulix/devel/sources/ymp ymp
           cd ymp
-          echo "deb https://deb.debian.org/debian unstable main" | sudo tee /etc/apt/sources.list
+          echo "deb https://deb.debian.org/debian unstable main contrib" | sudo tee /etc/apt/sources.list
           sudo apt update --allow-insecure-repositories
           sudo apt install debian-archive-keyring --allow-unauthenticated
           sudo apt update --allow-insecure-repositories

@@ -17,6 +17,7 @@ jobs:
         run: |
           git clone https://gitlab.com/sulix/devel/sources/ymp ymp
           cd ymp
+          echo "deb https://deb.debian.org/debian unstable main" | sudo tee /etc/apt/sources.list
           sudo apt update
           sudo apt install meson gcc valac --no-install-recommends -yq
           sudo apt install libarchive-dev libreadline-dev libcurl4-openssl-dev libbrotli-dev --no-install-recommends -yq
